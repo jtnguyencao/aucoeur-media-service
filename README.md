@@ -1,4 +1,4 @@
-# netlify-express
+# express project
 
 # Getting Started with Express NodeJs App
 
