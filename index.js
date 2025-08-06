@@ -11,7 +11,7 @@ app.use('/room',require("./routes/room"))
 app.use('/accommodation',require("./routes/accommodation"))
 app.use('/event',require("./routes/roomEvent"))
 app.get('/',(req,res)=>{
-    res.send("hello")
+    res.send("hello!")
 })
 app.listen(process.env.PORT)
 connectToMongo
