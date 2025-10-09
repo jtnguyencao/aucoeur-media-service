@@ -9,6 +9,7 @@ app.use(express.json())
 app.use('/auth/user',require("./routes/user"))
 app.use('/room',require("./routes/room"))
 app.use('/accommodation',require("./routes/accommodation"))
+app.use('/invoice',require("./routes/invoice"))
 app.use('/event',require("./routes/roomEvent"))
 app.get('/',(req,res)=>{
     res.send("hello!")
