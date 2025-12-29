@@ -15,8 +15,8 @@ const InvoiceItemSchema = new mongoose.Schema({
 
 const invoiceSchema = new mongoose.Schema({
   applicationId: { type: String, required: [true, 'Invoice must have applicationId'] },
-  title: { type: String },
   invoiceNumber: { type: String, unique: true, sparse: true },
+  invoiceName: { type: String },
   date: { type: Date },
   validityDate: { type: Date },
   projectStartDate: { type: Date },
@@ -34,6 +34,9 @@ const invoiceSchema = new mongoose.Schema({
   totalHT: { type: Number },
   totalTTC: { type: Number },
   remiseValue: { type: Number },
+  paymentUponSigning: { type: Number },
+  paymentBeforeInstallation: { type: Number },
+  paymentUponCompletion: { type: Number },
   createdAt: { type: Date, default: Date.now },
 })
 
