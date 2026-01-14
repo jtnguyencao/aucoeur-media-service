@@ -23,6 +23,7 @@ const invoiceSchema = new mongoose.Schema({
   daysToComplete: { type: Number },
   customerName: { type: String },
   customerAddress: { type: String },
+  customerTelephone: { type: String },
   customerSiren: { type: String },
   customerTva: { type: String },
   customerHasMaterials: { type: Boolean, default: false },
