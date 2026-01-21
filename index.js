@@ -1,16 +1,18 @@
 const connectToMongo = require("./db")
 const express = require('express')
 const cors = require('cors')
+const fetchuser = require('./middleware/fetchuser')
 require('dotenv').config()
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 app.use('/auth/user',require("./routes/user"))
-app.use('/room',require("./routes/room"))
-app.use('/accommodation',require("./routes/accommodation"))
-app.use('/invoice',require("./routes/invoice"))
-app.use('/event',require("./routes/roomEvent"))
+// Protected routes - require authentication and check if user still exists
+app.use('/room', fetchuser, require("./routes/room"))
+app.use('/accommodation', fetchuser, require("./routes/accommodation"))
+app.use('/invoice', fetchuser, require("./routes/invoice"))
+app.use('/event', fetchuser, require("./routes/roomEvent"))
 app.get('/',(req,res)=>{
     res.send("hello!")
 })
