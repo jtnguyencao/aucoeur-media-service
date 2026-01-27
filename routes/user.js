@@ -84,6 +84,12 @@ router.post("/loginuser", [
     } 
 })
 
+//validate user exists (for checking if user still exists)
+router.get("/validate", require("../middleware/fetchuser"), async (req, res) => {
+    // If middleware passes, user exists
+    res.status(200).json({ success: true, message: "User is valid" })
+})
+
 //modify
 router.post("/modify", [
     body('name', 'Enter a valid name').isLength({ min: 3 }),

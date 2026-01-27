@@ -8,7 +8,11 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use('/auth/user',require("./routes/user"))
-// Protected routes - require authentication and check if user still exists
+// Public routes - no authentication required (front office)
+app.use('/room', require("./routes/roomPublic"))
+app.use('/accommodation', require("./routes/accommodationPublic"))
+app.use('/event', require("./routes/roomEventPublic"))
+// Protected routes - require authentication and check if user still exists (back office)
 app.use('/room', fetchuser, require("./routes/room"))
 app.use('/accommodation', fetchuser, require("./routes/accommodation"))
 app.use('/invoice', fetchuser, require("./routes/invoice"))
@@ -16,5 +20,6 @@ app.use('/event', fetchuser, require("./routes/roomEvent"))
 app.get('/',(req,res)=>{
     res.send("hello!")
 })
-app.listen(process.env.PORT)
-connectToMongo
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`)
+})
